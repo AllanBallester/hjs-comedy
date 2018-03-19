@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class= "banner middle-pic" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dk9kkvy1o/image/upload/v1521466472/12670779_202269583463007_3577616422471396167_n_1_mpuqzg.jpg');">
+  <div class="banner-content">
+    <h1></i> </h1>
+    <p class="big p space"> On mets de l'humour là ou vous galérez à passer vos messages. </p>
+    <%= link_to "Réservez", "https://calendly.com/hjscomedy", class: "btn btn-yours" %>
+  </div>
+</div>
+
+<div class="container" id="home-giders">
+  <h5 class= "text-center text-space"> Alors HJS, c'était comment ? </h5>
+  <div class="row">
+  <% first_feedback = true %>
+    <% @feedbacks.each do |gider| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 <%= 'hidden-xs' unless first_feedback.present? %>">
+       <div class="testimonial">
+                        <div class="pic"><%= image_tag gider[:picture] %> </div>
+                        <h3 class="testimonial-title"><%= gider[:name] %></h3>
+                        <small class="post"><%= gider[:location] %></small>
+                        <p class="description">
+                            <%= gider[:description][0..285] %>
+                        </p>
+                    </div>
+      </div>
+    <% first_feedback = false %>
+    <% end %>
+  </div>
+</div>
